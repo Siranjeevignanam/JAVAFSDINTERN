@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: SpringBootRestAPICloudConfig
+server:
+  port: 7171
