@@ -1,0 +1,41 @@
+<div class="container custom-container-2">
+
+  <!-- Show it when there is no employee -->
+  <div class="no-data text-center" *ngIf="Employee.length == 0">
+    <p>There is no employee added yet!</p>
+    <button class="btn btn-outline-primary" routerLink="/create-employee">Add Empoyee</button>
+  </div>
+
+  <!-- Employees list table, it hides when there is no employee -->
+  <div *ngIf="Employee.length !== 0">
+    <h3 class="mb-3 text-center">Employees List</h3>
+
+    <div class="col-md-12">
+      <table class="table table-striped table-hover table-bordered" style="color: black" style="background-color:grey;border-radius: 5px">
+        <thead >
+          <tr style="color: black;">
+            <th scope="col" >User Id</th>
+            <th scope="col" class="col table-active">Name</th>
+            <th scope="col" class="col">Email</th>
+            <th scope="col" class="col table-active">Phone</th>
+            <th scope="col" class="col">Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divide">
+          <tr *ngFor="let employee of Employee" >
+            <td>{{employee.id}}</td>
+            <td>{{employee.name|uppercase}} </td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.phone}}</td>
+            <td>
+              <span class="edit" routerLink="/employee-edit/{{employee.id}}"> <img src="https://www.svgrepo.com/show/513500/pencil.svg" width="15" /></span>
+              <span class="delete" (click)="deleteEmployee(employee.id)"> <img src="https://www.svgrepo.com/show/422403/bin-delete-interface.svg" width="15" /></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
